@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
       <b-card  v-bind:img-src="filmInfo.Poster" img-alt="Card image" img-left class="mb-2">
+      <b-card-title>{{ filmInfo.Title }}</b-card-title>
       <b-card-text>
-        {{ filmInfo.Title }}
-        {{ filmInfo }}
+        {{ filmInfo.imdbRating }}
       </b-card-text>
       </b-card>
   </div>
@@ -42,6 +42,7 @@ a {
   color: #42b983;
 }
 img {
-  width: 5em;
+  height: 10em;
+  width: auto
 }
 </style>
