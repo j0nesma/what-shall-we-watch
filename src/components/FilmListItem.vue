@@ -3,7 +3,8 @@
       <b-card  v-bind:img-src="filmInfo.Poster" img-alt="Card image" img-left class="mb-2">
       <b-card-title>{{ filmInfo.Title }}</b-card-title>
       <b-card-text>
-        {{ filmInfo.imdbRating }}
+        Imdb - {{ filmInfo.imdbRating }}
+        <input type="button" v-on:click="removeItem" value='x'>
       </b-card-text>
       </b-card>
   </div>
@@ -11,6 +12,7 @@
 
 <script>
 import {getTitle} from '@/service/imdbService.js'
+import {removeFilm} from '@/service/filmListService'
 export default {
   name: "FilmListItem",
   props: ["filmId"],
@@ -21,8 +23,14 @@ export default {
   },
   mounted() {
     getTitle(this.$props.filmId).then(response => this.filmInfo = response.data);
+  },
+  methods:{
+    removeItem(){
+      removeFilm(this.filmInfo.imdbID);
+    }
   }
 };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

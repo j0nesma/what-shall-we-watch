@@ -8,6 +8,22 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './custom.scss'
 import Toasted from 'vue-toasted';
 
+// Import the Auth0 configuration
+import { domain, clientId } from "../auth_config.json";
+import { Auth0Plugin } from "./auth";
+
+Vue.use(Auth0Plugin, {
+  domain,
+  clientId,
+  onRedirectCallback: appState => {
+    router.push(
+      appState && appState.targetUrl
+        ? appState.targetUrl
+        : window.location.pathname
+    );
+  }
+});
+
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
