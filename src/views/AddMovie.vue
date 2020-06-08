@@ -1,13 +1,9 @@
 <template>
   <div class="pickMovie" @click="closeFilmList()">
-    <!-- Check that the SDK client is not currently loading before accessing is methods -->
-      <div v-if="!$auth.loading">
-        <!-- show login when not authenticated -->
-        <a v-if="!$auth.isAuthenticated" @click="login" class="button is-dark"><strong>Sign in</strong></a>
-        <!-- show logout when authenticated -->
-        <a v-if="$auth.isAuthenticated" @click="logout" class="button is-dark"><strong>Log out</strong></a>
-      </div>
+    <SignIn/>
     <div class="container">
+      <h2 v-if="$auth.isAuthenticated">{{ $auth.user.name }}</h2>
+      <p v-if="$auth.isAuthenticated">{{ $auth.user.email }}</p>
       <h2>What Shall We Watch</h2>
       <div class="blah">
         <b-form-input
@@ -44,12 +40,11 @@
         v-b-toggle.collapse-1
         v-bind:class="{ openedListIcon: toggleClicked }"
       >
-        <b-icon-list-task v-if="!toggleClicked"
-          
+        <b-icon-list-task
+          v-if="!toggleClicked"
           variant="info"
         ></b-icon-list-task>
-         <b-icon-x v-if="toggleClicked"
-        ></b-icon-x>
+        <b-icon-x v-if="toggleClicked"></b-icon-x>
       </div>
       <div id="moviePick">
         <MoviePicker />
@@ -104,22 +99,25 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: rgba(0, 0, 0, .5);
-  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 </style>
 
 <script>
 // @ is an alias to /src
 import { searchTitle } from "@/service/imdbService";
-import { getFilms } from "@/service/filmListService"
+import { getFilms } from "@/service/filmListService";
 import FilmListItem from "@/components/FilmListItem";
 import MoviePicker from "@/components/MoviePicker";
+import SignIn from "@/components/SignIn"
+
 export default {
   name: "Home",
   components: {
     FilmListItem,
     MoviePicker,
+    SignIn
   },
   data() {
     return {
@@ -140,14 +138,6 @@ export default {
     }
   },
   methods: {
-    login(){
-      this.$auth.loginWithRedirect();
-    },
-    logout(){
-      this.$auth.logout({
-      returnTo: window.location.origin
-    });
-    },
     addfilm(film) {
       this.films.push(film);
       this.newFilm = "";
@@ -176,10 +166,10 @@ export default {
     toggleStyleClick() {
       this.toggleClicked = !this.toggleClicked;
     },
-    closeFilmList(){
+    closeFilmList() {
       console.log(this.$refs);
-      console.log(this.$root)
-    }
+      console.log(this.$root);
+    },
   },
 };
 </script>
