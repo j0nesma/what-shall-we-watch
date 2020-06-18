@@ -13,31 +13,6 @@ app.use(bodyParser.json());
 var filmRoute = require("./routes/films");
 app.use("/films",filmRoute);
 
-app.get("/", (req, res) => {
-  res.json({
-    message: "Welcome",
-  });
-});
-
-//Swagger Setup
-const swaggerUi = require("swagger-ui-express");
-const swaggerJSDoc = require("swagger-jsdoc");
-const swaggerOptions = {
-  swaggerDefinition: {
-    info: {
-      title: "WSWW API",
-      description: "This is a API for the What Shall We Watch Webpage",
-      contact: {
-        name: "Matthew Jones",
-      },
-      servers: ["http://localhost:4000"],
-    },
-  },
-  apis: ["app.js"],
-};
-const swaggerDocs = swaggerJSDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
 //Port setup
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
