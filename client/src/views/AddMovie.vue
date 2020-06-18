@@ -1,6 +1,6 @@
 <template>
   <div class="pickMovie" @click="closeFilmList()">
-    <SignIn/>
+    <!-- <SignIn/> -->
     <div class="container">
       <h2 v-if="$auth.isAuthenticated">{{ $auth.user.name }}</h2>
       <p v-if="$auth.isAuthenticated">{{ $auth.user.email }}</p>
