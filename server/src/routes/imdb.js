@@ -10,4 +10,3 @@ router.get("/search/:searchValue", (req, res) =>{
 });
     
 module.exports = router;
-// axios.get("http://www.omdbapi.com/?page=1&apikey=88ec6c42&s=" + title);

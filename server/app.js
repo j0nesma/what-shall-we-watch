@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 //Routes
 var filmRoute = require("./src/routes/films");
 var imdbRoute = require("./src/routes/imdb");
+
 app.use("/api/films",filmRoute);
 app.use("/api/imdb", imdbRoute);
 
