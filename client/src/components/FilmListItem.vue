@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import {getTitle} from '@/service/imdbService.js'
 import {removeFilm} from '@/service/filmService'
 export default {
   name: "FilmListItem",
@@ -22,7 +21,7 @@ export default {
     }
   },
   mounted() {
-    getTitle(this.$props.filmId).then(response => this.filmInfo = response.data);
+    this.title = "test";
   },
   methods:{
     removeItem(){
