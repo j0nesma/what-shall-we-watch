@@ -21,7 +21,7 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
-
+app.use(express.static(__dirname+'/public/'))
 //Handle Production
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static(__dirname+'/public/'))

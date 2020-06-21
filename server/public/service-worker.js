@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.4ebaa6f298a4055c0c054ee7aa69ca3e.js"
+  "/precache-manifest.bd889aa262b5037dc97c8b0a70e6df4c.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "what-shall-we-watch"});

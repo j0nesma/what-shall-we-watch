@@ -1,6 +1,5 @@
 <template>
   <div class="pickMovie" @click="closeFilmList()">
-    <!-- <SignIn/> -->
     <div class="container">
       <h2 v-if="$auth.isAuthenticated">{{ $auth.user.name }}</h2>
       <p v-if="$auth.isAuthenticated">{{ $auth.user.email }}</p>
@@ -109,14 +108,12 @@
 import { getFilms, searchTitle} from "@/service/filmService";
 import FilmListItem from "@/components/FilmListItem";
 import MoviePicker from "@/components/MoviePicker";
-// import SignIn from "@/components/SignIn"
 
 export default {
   name: "Home",
   components: {
     FilmListItem,
-    MoviePicker,
-    // SignIn
+    MoviePicker
   },
   data() {
     return {
