@@ -12,7 +12,7 @@
 
 <script>
 import {getTitle} from '@/service/imdbService.js'
-import {removeFilm} from '@/service/filmListService'
+import {removeFilm} from '@/service/filmService'
 export default {
   name: "FilmListItem",
   props: ["filmId"],

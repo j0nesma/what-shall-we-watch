@@ -106,18 +106,17 @@
 
 <script>
 // @ is an alias to /src
-import { searchTitle } from "@/service/imdbService";
-import { getFilms } from "@/service/filmListService";
+import { getFilms, searchTitle} from "@/service/filmService";
 import FilmListItem from "@/components/FilmListItem";
 import MoviePicker from "@/components/MoviePicker";
-import SignIn from "@/components/SignIn"
+// import SignIn from "@/components/SignIn"
 
 export default {
   name: "Home",
   components: {
     FilmListItem,
     MoviePicker,
-    SignIn
+    // SignIn
   },
   data() {
     return {
@@ -159,7 +158,7 @@ export default {
         return;
       } else {
         searchTitle(this.newFilm).then(
-          (response) => (this.searchResults = response.data.Search)
+          (response) => (this.searchResults = response.data)
         );
       }
     },

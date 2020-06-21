@@ -11,7 +11,9 @@ app.use(bodyParser.json());
 
 //Routes
 var filmRoute = require("./src/routes/films");
-app.use("/films",filmRoute);
+var imdbRoute = require("./src/routes/imdb");
+app.use("/api/films",filmRoute);
+app.use("/api/imdb", imdbRoute);
 
 //Port setup
 const port = process.env.PORT || 4000;
